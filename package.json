@@ -1,0 +1,29 @@
+{
+    "name": "yui3-offline",
+    "description": "YUI3 Offline is a helper tool for building offline web applictions with YUI3.",
+    "version": "0.0.1",
+    "main": "./lib/fetcher",
+    "author" : "Ric Allinson",
+    "engines" : {
+        "node" : ">=0.6.0 <= 0.9.0"
+    },
+    "bin": {
+        "yui3-offline": "bin/yui3-offline"
+    },
+    "scripts": {
+        "test": "node ./tests/run.js"
+    },
+    "dependencies" : {
+        "commander": "1.0.x",
+        "connect": "2.4.x",
+        "js-yaml": "1.0.x",
+        "step": "0.0.x",
+        "yui": "3.6.x"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/capecodehq/yui3-offline.git"
+    },
+    "license": "MIT"
+}

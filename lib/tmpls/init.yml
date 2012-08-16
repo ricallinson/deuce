@@ -1,0 +1,17 @@
+
+---
+
+# The URL to use for loading YUI
+url: "./yui/yui/yui.js"
+
+# The "YUI.GlobalConfig" that will be used
+yui:
+    debug: true
+    combine: false
+    base: "./yui/"
+
+# Arrays to hold strings that you want in either the <head> or <body> tags
+html:
+    head: 
+        - "<title>YUI Web App Builder</title>"
+    body: []
