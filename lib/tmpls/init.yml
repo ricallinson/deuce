@@ -35,5 +35,5 @@ yui:
 # Arrays to hold strings that you want in either the <head> or <body> tags
 html:
     head: 
-        - "<title>YUI Web App Builder</title>"
+        - "<title>YUI Offline</title>"
     body: []
