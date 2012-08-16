@@ -12,12 +12,13 @@ YUI3 Offline is a helper tool for building offline web applications with YUI3. I
 
     Options:
 
-        -h, --help         output usage information
-        -V, --version      output the version number
-        -p, --port [port]  which port to use
-        -r, --root [dir]   which directory to run from
-        -b, --build [dir]  build all files for the web app
-        -u, --uglify [dir]  compress all javascript files using uglify
+	-h, --help         output usage information
+	-V, --version      output the version number
+	-v, --verbose      runtime info
+	-p, --port [port]  which port to use
+	-r, --root [dir]   which directory to run from
+	-b, --build [dir]  build all files for the web app to the given directory
+	-u, --uglify       compress all javascript files using uglify
 
 ## Usage
 
@@ -26,14 +27,13 @@ With no options provided __YUI3 Offline__ will start a localhost connect server 
 	> ./bin/yui3-offline
 	> Running at http://localhost:3000/index.html
 
-Once running it will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page and YUI3 from the path [http://localhost:3000/yui](http://localhost:3000/yui). The version of YUI3 used is the same as the version installed with __YUI3 Offline__. You can check this by running the following command.
+Once running it will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page and YUI3 from the path [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI3](http://yuilibrary.com/) used is one installed with __YUI3 Offline__. You can check this by running the following command.
 
 	> npm ls yui
 
-
 ### init.js
 
-When opened in a browser __YUI3 Offline__ will try and (use)[http://yuilibrary.com/yui/docs/yui/] a module named "init".
+Once opened in a browser __YUI3 Offline__ will try and (use)[http://yuilibrary.com/yui/docs/yui/] a module named "init".
 
 	YUI.add("init", function (Y) {
 		Y.log("Hello world!");
