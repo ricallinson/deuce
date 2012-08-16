@@ -13,3 +13,4 @@ YUI3 Offline is a helper tool for building offline web applictions with YUI3.
         -p, --port [port]  which port to use
         -r, --root [dir]   which directory to run from
         -b, --build [dir]  build all files for the web app
+        -u, --uglify [dir]  compress all javascript files using uglify
