@@ -6,7 +6,7 @@ YUI3 Offline is a helper tool for building offline web applications with YUI3. I
 
 	> git clone https://github.com/capecodehq/yui3-offline.git
 	> cd ./yui3-offline
-    > ../bin/yui3-offline --help
+    > ./bin/yui3-offline --help
 
 	Usage: yui3-offline [options]
 
@@ -21,11 +21,52 @@ YUI3 Offline is a helper tool for building offline web applications with YUI3. I
 
 ## Usage
 
-### index.html
+With no options provided __YUI3 Offline__ will start a localhost connect server on port 3000.
+
+	> ./bin/yui3-offline
+	> Running at http://localhost:3000/index.html
+
+Once running it will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page and YUI3 from the path [http://localhost:3000/yui](http://localhost:3000/yui). The version of YUI3 used is the same as the version installed with __YUI3 Offline__. You can check this by running the following command.
+
+	> npm ls yui
+
 
 ### init.js
 
-### init.json
+When opened in a browser __YUI3 Offline__ will try and (use)[http://yuilibrary.com/yui/docs/yui/] a module named "init".
+
+	YUI.add("init", function (Y) {
+		Y.log("Hello world!");
+	});
+
+### index.html
+
+Unless an "index.html" file is found in the application directory root __YUI3 Offline__ will generate one for you. It uses default settings that can be overridden via configuration found in either a "init.yml" or "init.json" file.
+
+	<html>
+	    <head>
+	        <title>YUI Offline</title>
+	        <script src="./yui/yui/yui.js"></script>
+	        <script type="text/javascript">
+	        	YUI.GlobalConfig = {
+					"debug":true,
+					"combine":false,
+					"base":"./yui/",
+					"modules":{
+						"init":{
+							"fullpath":"./init.js"
+						}
+					}
+				};
+				YUI().use("init");
+	        </script>
+	    </head>
+	    <body>
+			<!-- YUI Offline -->
+	    </body>
+	</html>
+
+### init.yml & init.json
 
 # License
 

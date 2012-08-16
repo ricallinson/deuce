@@ -36,4 +36,5 @@ yui:
 html:
     head: 
         - "<title>YUI Offline</title>"
-    body: []
+    body:
+    	- "<!-- YUI Offline -->"
