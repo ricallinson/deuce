@@ -15,9 +15,15 @@ With no options provided __YUI3 Offline__ will start a localhost connect server 
 	> ./bin/yui3-offline
 	> Running at http://localhost:3000/index.html
 
-Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page and [YUI3 modules](http://yuilibrary.com/yui/docs/guides/) from the path [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI3](http://yuilibrary.com/) used is one installed with __YUI3 Offline__. You can check this by running the following command.
+Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page sets the global YUI configuration to include all YUI Modules found in or below the current application directory.
+
+All [YUI3 modules](http://yuilibrary.com/yui/docs/guides/) from the path [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI3](http://yuilibrary.com/) used is one installed with __YUI3 Offline__. You can check this by running the following command.
 
 	> npm ls yui
+
+## Magic
+
+
 
 ### init.js
 
