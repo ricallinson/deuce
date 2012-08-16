@@ -21,7 +21,7 @@ Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.h
 
 ### init.js
 
-Once opened in a browser __YUI3 Offline__ will try and [use](http://yuilibrary.com/yui/docs/yui/) a module named "init".
+Once opened in a browser __YUI3 Offline__ will try and [.use()](http://yuilibrary.com/yui/docs/yui/) a module named "init".
 
 	YUI.add("init", function (Y) {
 		Y.log("Hello world!");
@@ -55,6 +55,8 @@ Unless an "index.html" file is found in the application directory, __YUI3 Offlin
 	</html>
 
 ### init.yml & init.json
+
+	TODO
 
 # License
 
