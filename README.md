@@ -46,11 +46,13 @@ __YUI3 Offline__ comes with some helpers to ease your application creation proce
 
 ### YUI.add("init");
 
-When using the generated "index.html", __YUI3 Offline__ will try and [.use()](http://yuilibrary.com/yui/docs/yui/) a module named "init".
+When using the generated "index.html", __YUI3 Offline__ will try and [.use()](http://yuilibrary.com/yui/docs/yui/) a module named "init". In your application directory you can create a ".js" file with any name and insert following.
 
 	YUI.add("init", function (Y) {
 		Y.log("Hello world!");
 	});
+
+When you start __YUI3 Offline__ if will load the "init" module automatically.
 
 ### ./confs
 
