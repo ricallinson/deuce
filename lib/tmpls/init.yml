@@ -26,6 +26,9 @@
 # The URL to use for loading YUI
 url: "./yui/yui/yui.js"
 
+# The YUI Module name to .use() first
+module: "init"
+
 # The "YUI.GlobalConfig" that will be used
 yui:
     debug: true
