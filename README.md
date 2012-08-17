@@ -3,11 +3,9 @@
 __Deuce__ is a developer tool for building offline web applications with YUI. It allows you to easily create YUI based applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
 
 ## Installation
-
-	> git clone https://github.com/capecodehq/deuce.git
-	> cd ./deuce
-	> npm install .
-    > ./bin/deuce --help
+	
+	> npm install deuce -g
+	> deuce -h
 
 ## Usage
 
