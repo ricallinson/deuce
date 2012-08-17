@@ -32,7 +32,8 @@ yui:
     combine: false
     base: "./yui/"
 
-# Arrays to hold strings that you want in either the <head> or <body> tags
+# Arrays to hold strings that you want in either
+# the <head> or <body> tags of the html page
 html:
     head: 
         - "<title>YUI Offline</title>"
