@@ -11,7 +11,7 @@ __Deuce__ is a developer tool for building offline web applications with YUI. It
 
 With no options provided __Deuce__ will start a connect server on localhost port 3000.
 
-	> ./bin/deuce
+	> deuce
 	> Running at http://localhost:3000/index.html
 
 Once running __Deuce__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines a YUI global configuration object which includes all ".js" files that are YUI Modules and were found in or below the application directory. Any ".js" files found which were not YUI Modules will still be available but called out on server start. For example, the directory structure below;
