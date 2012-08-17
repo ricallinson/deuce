@@ -10,12 +10,17 @@ __YUI3 Offline__ is a helper tool for building offline web applications with YUI
 
 ## Usage
 
-With no options provided __YUI3 Offline__ will start a localhost connect server on port 3000.
+With no options provided __YUI3 Offline__ will start a connect server on localhost port 3000.
 
 	> ./bin/yui3-offline
 	> Running at http://localhost:3000/index.html
 
-Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page sets the global YUI configuration to include all YUI Modules found in or below the current application directory.
+Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines the YUI global configuration object and includes all "*.js" files which were YUI Modules and were found in or below the application directory. Any "*.js" files found which were not YUI Modules will still be available but throw an error on server start.
+
+	./app
+		init.js
+		/lib
+			/my-yui-module.js
 
 All [YUI3 modules](http://yuilibrary.com/yui/docs/guides/) from the path [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI3](http://yuilibrary.com/) used is one installed with __YUI3 Offline__. You can check this by running the following command.
 
@@ -33,7 +38,7 @@ When using the generated "index.html", __YUI3 Offline__ will try and [.use()](ht
 		Y.log("Hello world!");
 	});
 
-### confs
+### ./confs
 
 Any directory that has the name "confs" will be treated as a bucket of configuration files. You can add any number of ".yaml" and ".json" files into this directory. __YUI3 Offline__ will map this directory into a YUI Module where each file found will be represented as an attribute of the module.
 
@@ -56,8 +61,25 @@ From this directory structure __YUI3 Offline__ will map the URI [http://localhos
 		};
 	});
 
-### tmpls
+### ./tmpls
 
+Any directory that has the name "tmpls" will be treated as a bucket of template files. You can add any number of none "*.js" files into this directory. __YUI3 Offline__ will map this directory into a YUI Module where each file found will be represented as an attribute of the module.
+
+	./app
+		/group
+			/tmpls
+				home.html
+				away.html
+
+From this directory structure __YUI3 Offline__ will map the URI [http://localhost:3000/group/tmpls.js](http://localhost:3000/group/tmpls.js) to a YUI Module like the one below.
+
+	YUI.add("group-tmpls", function (Y) {
+		Y.namespace("tmpls")["group-tmpls"] = {
+	    	"away": "<div>{{key}}</div>",
+	    	"home": "<span>{{key}}</span>"
+		};
+	});
+					
 ### index.html
 
 Unless an "index.html" file is found in the application directory, __YUI3 Offline__ will generate one for you. It uses default settings that can be overridden via configuration found in either a "init.yml" or "init.json" file.
