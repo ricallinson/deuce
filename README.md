@@ -94,6 +94,23 @@ With this directory structure __YUI3 Offline__ will map the URI [http://localhos
 		};
 	});
 
+### ./langs
+
+Any directory that has the name "langs" will be treated as a directory of [YUI Language Modules](http://yuilibrary.com/yui/docs/intl/). You can add any number of ".yaml" and ".json" files into this directory. __YUI3 Offline__ will map each file into a YUI Language Module where each file found will become a different language. For example;
+
+	./app
+		/group
+			/langs
+				module_en.yaml
+				module_en-US.json
+				module_en-GB.yaml
+
+With this directory structure __YUI3 Offline__ will generate the following URI's where each URI is a YUI Language Module.
+
+	http://localhost:3000/group/langs/module_en.js
+	http://localhost:3000/group/langs/module_en-US.js
+	http://localhost:3000/group/langs/module_en-GB.js
+
 ## Customize
 
 __YUI3 Offline__ attempts to provide sensible defaults. However, if these do not meet your requirements here are some options that may help you.
