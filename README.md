@@ -1,6 +1,6 @@
 # YUI3 Offline
 
-__YUI3 Offline__ is a helper tool for building offline web applications with YUI3. It allows you to easily create YUI3 based applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
+__YUI3 Offline__ is a helper tool for building offline web applications with YUI. It allows you to easily create YUI based applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
 
 ## Installation
 
@@ -26,7 +26,7 @@ Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.h
 When used with __YUI3 Offline__;
 
 	> cd ./app
-	> ./bin/yui3-offline
+	> yui3-offline
 
 Serves the following URI's;
 
@@ -35,7 +35,7 @@ Serves the following URI's;
 	http://localhost:3000/lib/my-yui-module.js
 	http://localhost:3000/lib/not-yui.js
 
-In addition to the above, all [YUI3 Modules](http://yuilibrary.com/yui/docs/guides/) are a available on the the URI [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI3](http://yuilibrary.com/) used is the same as the one installed with __YUI3 Offline__. You can check this by running the following command.
+In addition to the above, all [YUI Modules](http://yuilibrary.com/yui/docs/guides/) are a available on the the URI [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI](http://yuilibrary.com/) used is the same as the one installed with __YUI3 Offline__. You can check this by running the following command.
 
 	> npm ls yui
 
@@ -99,7 +99,7 @@ Unless an "index.html" file is found in the application directory, __YUI3 Offlin
 
 	<html>
 	    <head>
-	        <title>YUI Offline</title>
+	        <title>YUI3 Offline</title>
 	        <script src="./yui/yui/yui.js"></script>
 	        <script type="text/javascript">
 	        	YUI.GlobalConfig = {
@@ -116,7 +116,7 @@ Unless an "index.html" file is found in the application directory, __YUI3 Offlin
 	        </script>
 	    </head>
 	    <body>
-			<!-- YUI Offline -->
+			<!-- YUI3 Offline -->
 	    </body>
 	</html>
 
