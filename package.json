@@ -1,6 +1,6 @@
 {
     "name": "deuce",
-    "description": "Deuce is a developer tool for building offline web applications with YUI.",
+    "description": "Deuce is a developer tool for building serverless web applications with YUI.",
     "version": "0.0.1",
     "main": "./lib/middleware",
     "author" : "Richard S Allinson",
