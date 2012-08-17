@@ -103,12 +103,10 @@ __YUI3 Offline__ attempts to provide sensible defaults. However, if these do not
 You can provide either an "init.yaml" or an "init.json" in the your application directory root.
 
 	./app
+		init.yaml
 		init.js
-		/lib
-			/my-yui-module.js
-			/not-yui.js
 
-If __YUI3 Offline__ encounters one at server start it will use the values defined there in place of the defaults. Below are the currently supported key.
+If __YUI3 Offline__ encounters one of these at server start it will use the values defined there in place of its defaults. Below are the currently supported keys;
 
 	# The URL to use for loading YUI
 	url: "./yui/yui/yui.js"
@@ -129,7 +127,7 @@ If __YUI3 Offline__ encounters one at server start it will use the values define
 
 ### index.html
 
-Unless an "index.html" file is found in the application directory root, __YUI3 Offline__ will generate one for you. It uses default settings that can be overridden via configuration found in either a "init.yml" or "init.json" file.
+Unless an "index.html" file is found in the application directory root, __YUI3 Offline__ will generate one for you. It uses default settings that can be overridden via the configuration files "init.yaml" or "init.json".
 
 	<html>
 	    <head>
