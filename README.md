@@ -119,7 +119,7 @@ __YUI3 Offline__ attempts to provide sensible defaults. However, if these do not
 
 ### init.yml & init.json
 
-You can provide either an "init.yaml" or an "init.json" in the your application directory root.
+You can provide either an "init.yaml" or an "init.json" in your application directory root.
 
 	./app
 		init.yaml
