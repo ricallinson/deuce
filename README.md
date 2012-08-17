@@ -1,6 +1,6 @@
 # YUI3 Offline
 
-YUI3 Offline is a helper tool for building offline web applications with YUI3. It allows you to easily create YUI3 based applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
+__YUI3 Offline__ is a helper tool for building offline web applications with YUI3. It allows you to easily create YUI3 based applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
 
 ## Installation
 
@@ -21,17 +21,42 @@ All [YUI3 modules](http://yuilibrary.com/yui/docs/guides/) from the path [http:/
 
 	> npm ls yui
 
-## Magic
+## Helpers
 
+__YUI3 Offline__ comes with some helpers to ease your application creation process.
 
+### YUI.add("init");
 
-### init.js
-
-Once opened in a browser __YUI3 Offline__ will try and [.use()](http://yuilibrary.com/yui/docs/yui/) a module named "init".
+When using the generated "index.html", __YUI3 Offline__ will try and [.use()](http://yuilibrary.com/yui/docs/yui/) a module named "init".
 
 	YUI.add("init", function (Y) {
 		Y.log("Hello world!");
 	});
+
+### confs
+
+Any directory that has the name "confs" will be treated as a bucket of configuration files. You can add any number of ".yaml" and ".json" files into this directory. __YUI3 Offline__ will map this directory into a YUI Module where each file found will be represented as an attribute of the module.
+
+	./app
+		/group
+			/confs
+				home.json
+				away.yaml
+
+From this directory structure __YUI3 Offline__ will map the URI [http://localhost:3000/group/confs.js](http://localhost:3000/group/confs.js) to a YUI Module like the one below.
+
+	YUI.add("group-confs", function (Y) {
+		Y.namespace("confs")["group-confs"] = {
+	    	"away": {
+	        	"key": "val"
+	    	},
+	    	"home": {
+	        	"key": "val"
+	    	}
+		};
+	});
+
+### tmpls
 
 ### index.html
 
