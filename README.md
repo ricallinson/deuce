@@ -15,14 +15,21 @@ With no options provided __YUI3 Offline__ will start a connect server on localho
 	> ./bin/yui3-offline
 	> Running at http://localhost:3000/index.html
 
-Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines the YUI global configuration object and includes all "*.js" files which were YUI Modules and were found in or below the application directory. Any "*.js" files found which were not YUI Modules will still be available but throw an error on server start.
+Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines a YUI global configuration object which includes all ".js" files that are YUI Modules and were found in or below the application directory. Any ".js" files found which were not YUI Modules will still be available but throw an error on server start. For example, the directory structure below;
 
 	./app
 		init.js
 		/lib
 			/my-yui-module.js
+			/not-yui.js
 
-All [YUI3 modules](http://yuilibrary.com/yui/docs/guides/) from the path [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI3](http://yuilibrary.com/) used is one installed with __YUI3 Offline__. You can check this by running the following command.
+Maps to the following URI's;
+
+	http://localhost:3000/init.js
+	http://localhost:3000/lib/my-yui-module.js
+	http://localhost:3000/lib/not-yui.js
+
+In addition to the above, all [YUI3 Modules](http://yuilibrary.com/yui/docs/guides/) are a available on the the URI [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI3](http://yuilibrary.com/) used is the same as the one installed with __YUI3 Offline__. You can check this by running the following command.
 
 	> npm ls yui
 
