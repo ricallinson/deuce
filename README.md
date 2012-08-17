@@ -38,6 +38,14 @@ In addition to the above, all [YUI Modules](http://yuilibrary.com/yui/docs/guide
 
 	> npm ls yui
 
+Once you have your serverless web application ready to go you can build it with the following command;
+
+	> deuce --build ../output/dir
+
+If you want your final application to be minified you can add the "--uglify" option;
+
+	> deuce --uglify --build ../output/dir
+
 ## Helpers
 
 __Deuce__ comes with some helpers to ease your application creation process.
