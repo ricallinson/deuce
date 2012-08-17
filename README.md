@@ -15,7 +15,7 @@ With no options provided __YUI3 Offline__ will start a connect server on localho
 	> ./bin/yui3-offline
 	> Running at http://localhost:3000/index.html
 
-Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines a YUI global configuration object which includes all ".js" files that are YUI Modules and were found in or below the application directory. Any ".js" files found which were not YUI Modules will still be available but throw an error on server start. For example, the directory structure below;
+Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines a YUI global configuration object which includes all ".js" files that are YUI Modules and were found in or below the application directory. Any ".js" files found which were not YUI Modules will still be available but called out on server start. For example, the directory structure below;
 
 	./app
 		init.js
@@ -23,8 +23,14 @@ Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.h
 			/my-yui-module.js
 			/not-yui.js
 
-Maps to the following URI's;
+When used with __YUI3 Offline__;
 
+	> cd ./app
+	> ./bin/yui3-offline
+
+Serves the following URI's;
+
+	http://localhost:3000/index.html
 	http://localhost:3000/init.js
 	http://localhost:3000/lib/my-yui-module.js
 	http://localhost:3000/lib/not-yui.js
