@@ -36,6 +36,6 @@ yui:
 # the <head> or <body> tags of the html page
 html:
     head: 
-        - "<title>YUI Offline</title>"
+        - "<title>Deuce</title>"
     body:
-        - "<!-- YUI Offline -->"
+        - "<!-- Deuce -->"

@@ -1,22 +1,22 @@
-# YUI3 Offline
+# Deuce
 
-__YUI3 Offline__ is a developer tool for building offline web applications with YUI. It allows you to easily create YUI based applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
+__Deuce__ is a developer tool for building offline web applications with YUI. It allows you to easily create YUI based applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
 
 ## Installation
 
-	> git clone https://github.com/capecodehq/yui3-offline.git
-	> cd ./yui3-offline
+	> git clone https://github.com/capecodehq/deuce.git
+	> cd ./deuce
 	> npm install .
-    > ./bin/yui3-offline --help
+    > ./bin/deuce --help
 
 ## Usage
 
-With no options provided __YUI3 Offline__ will start a connect server on localhost port 3000.
+With no options provided __Deuce__ will start a connect server on localhost port 3000.
 
-	> ./bin/yui3-offline
+	> ./bin/deuce
 	> Running at http://localhost:3000/index.html
 
-Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines a YUI global configuration object which includes all ".js" files that are YUI Modules and were found in or below the application directory. Any ".js" files found which were not YUI Modules will still be available but called out on server start. For example, the directory structure below;
+Once running __Deuce__ will serve a single [http://localhost:3000/index.html](http://localhost:3000/index.html) page. This page defines a YUI global configuration object which includes all ".js" files that are YUI Modules and were found in or below the application directory. Any ".js" files found which were not YUI Modules will still be available but called out on server start. For example, the directory structure below;
 
 	./app
 		init.js
@@ -24,10 +24,10 @@ Once running __YUI3 Offline__ will serve a single [http://localhost:3000/index.h
 			/my-yui-module.js
 			/not-yui.js
 
-When used with __YUI3 Offline__;
+When used with __Deuce__;
 
 	> cd ./app
-	> yui3-offline
+	> deuce
 
 Serves the following URI's;
 
@@ -36,27 +36,27 @@ Serves the following URI's;
 	http://localhost:3000/lib/my-yui-module.js
 	http://localhost:3000/lib/not-yui.js
 
-In addition to the above, all [YUI Modules](http://yuilibrary.com/yui/docs/guides/) are a available on the the URI [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI](http://yuilibrary.com/) used is the same as the one installed with __YUI3 Offline__. You can check this by running the following command.
+In addition to the above, all [YUI Modules](http://yuilibrary.com/yui/docs/guides/) are a available on the the URI [http://localhost:3000/yui](http://localhost:3000/yui). The version of [YUI](http://yuilibrary.com/) used is the same as the one installed with __Deuce__. You can check this by running the following command.
 
 	> npm ls yui
 
 ## Helpers
 
-__YUI3 Offline__ comes with some helpers to ease your application creation process.
+__Deuce__ comes with some helpers to ease your application creation process.
 
 ### YUI.add("init");
 
-When using the generated "index.html", __YUI3 Offline__ will try and [.use()](http://yuilibrary.com/yui/docs/yui/) a module named "init". In your application directory you can create a ".js" file with any name and insert following.
+When using the generated "index.html", __Deuce__ will try and [.use()](http://yuilibrary.com/yui/docs/yui/) a module named "init". In your application directory you can create a ".js" file with any name and insert following.
 
 	YUI.add("init", function (Y) {
 		Y.log("Hello world!");
 	});
 
-When you start __YUI3 Offline__ if will load the "init" module automatically.
+When you start __Deuce__ if will load the "init" module automatically.
 
 ### ./confs
 
-Any directory that has the name "confs" will be treated as a bucket of configuration files. You can add any number of ".yaml" and ".json" files into this directory. __YUI3 Offline__ will map this directory into a YUI Module where each file found will be represented as an attribute of the module. For example;
+Any directory that has the name "confs" will be treated as a bucket of configuration files. You can add any number of ".yaml" and ".json" files into this directory. __Deuce__ will map this directory into a YUI Module where each file found will be represented as an attribute of the module. For example;
 
 	./app
 		/group
@@ -64,7 +64,7 @@ Any directory that has the name "confs" will be treated as a bucket of configura
 				home.json
 				away.yaml
 
-With this directory structure __YUI3 Offline__ will map the URI [http://localhost:3000/group/confs.js](http://localhost:3000/group/confs.js) to a YUI Module like the one below. The name of the YUI Module is the parent directory appended with the string "-confs".
+With this directory structure __Deuce__ will map the URI [http://localhost:3000/group/confs.js](http://localhost:3000/group/confs.js) to a YUI Module like the one below. The name of the YUI Module is the parent directory appended with the string "-confs".
 
 	YUI.add("group-confs", function (Y) {
 		Y.namespace("confs")["group-confs"] = {
@@ -79,7 +79,7 @@ With this directory structure __YUI3 Offline__ will map the URI [http://localhos
 
 ### ./tmpls
 
-Any directory that has the name "tmpls" will be treated as a bucket of template files. You can add any number of none ".js" files into this directory. __YUI3 Offline__ will map this directory into a YUI Module where each file found will be represented as an attribute of the module.  For example;
+Any directory that has the name "tmpls" will be treated as a bucket of template files. You can add any number of none ".js" files into this directory. __Deuce__ will map this directory into a YUI Module where each file found will be represented as an attribute of the module.  For example;
 
 	./app
 		/group
@@ -87,7 +87,7 @@ Any directory that has the name "tmpls" will be treated as a bucket of template 
 				home.html
 				away.html
 
-With this directory structure __YUI3 Offline__ will map the URI [http://localhost:3000/group/tmpls.js](http://localhost:3000/group/tmpls.js) to a YUI Module like the one below. The name of the YUI Module is the parent directory appended with the string "-tmpls".
+With this directory structure __Deuce__ will map the URI [http://localhost:3000/group/tmpls.js](http://localhost:3000/group/tmpls.js) to a YUI Module like the one below. The name of the YUI Module is the parent directory appended with the string "-tmpls".
 
 	YUI.add("group-tmpls", function (Y) {
 		Y.namespace("tmpls")["group-tmpls"] = {
@@ -98,7 +98,7 @@ With this directory structure __YUI3 Offline__ will map the URI [http://localhos
 
 ### ./langs
 
-Any directory that has the name "langs" will be treated as a directory of [YUI Language Modules](http://yuilibrary.com/yui/docs/intl/). You can add any number of ".yaml" and ".json" files into this directory. __YUI3 Offline__ will map each file into a YUI Language Module where each file found will become a different language. For example;
+Any directory that has the name "langs" will be treated as a directory of [YUI Language Modules](http://yuilibrary.com/yui/docs/intl/). You can add any number of ".yaml" and ".json" files into this directory. __Deuce__ will map each file into a YUI Language Module where each file found will become a different language. For example;
 
 	./app
 		/group
@@ -107,7 +107,7 @@ Any directory that has the name "langs" will be treated as a directory of [YUI L
 				module_en-US.json
 				module_en-GB.yaml
 
-With this directory structure __YUI3 Offline__ will generate the following URI's where each URI is a YUI Language Module.
+With this directory structure __Deuce__ will generate the following URI's where each URI is a YUI Language Module.
 
 	http://localhost:3000/group/langs/module_en.js
 	http://localhost:3000/group/langs/module_en-US.js
@@ -115,7 +115,7 @@ With this directory structure __YUI3 Offline__ will generate the following URI's
 
 ## Customize
 
-__YUI3 Offline__ attempts to provide sensible defaults. However, if these do not meet your requirements here are some options that may help you.
+__Deuce__ attempts to provide sensible defaults. However, if these do not meet your requirements here are some options that may help you.
 
 ### init.yml & init.json
 
@@ -125,7 +125,7 @@ You can provide either an "init.yaml" or an "init.json" in your application dire
 		init.yaml
 		init.js
 
-If __YUI3 Offline__ encounters one of these at server start it will use the values defined there in place of its defaults. Below are the currently supported keys;
+If __Deuce__ encounters one of these at server start it will use the values defined there in place of its defaults. Below are the currently supported keys;
 
 	# The URL to use for loading YUI
 	url: "./yui/yui/yui.js"
@@ -140,17 +140,17 @@ If __YUI3 Offline__ encounters one of these at server start it will use the valu
 	# the <head> or <body> tags of the html page
 	html:
 	    head: 
-	        - "<title>YUI Offline</title>"
+	        - "<title>Deuce</title>"
 	    body:
-	        - "<!-- YUI Offline -->"
+	        - "<!-- Deuce -->"
 
 ### index.html
 
-Unless an "index.html" file is found in the application directory root, __YUI3 Offline__ will generate one for you. It uses default settings that can be overridden via the configuration files "init.yaml" or "init.json".
+Unless an "index.html" file is found in the application directory root, __Deuce__ will generate one for you. It uses default settings that can be overridden via the configuration files "init.yaml" or "init.json".
 
 	<html>
 	    <head>
-	        <title>YUI3 Offline</title>
+	        <title>Deuce</title>
 	        <script src="./yui/yui/yui.js"></script>
 	        <script type="text/javascript">
 	        	YUI.GlobalConfig = {
@@ -167,13 +167,13 @@ Unless an "index.html" file is found in the application directory root, __YUI3 O
 	        </script>
 	    </head>
 	    <body>
-			<!-- YUI3 Offline -->
+			<!-- Deuce -->
 	    </body>
 	</html>
 
 # License
 
-yui3-offline is released under the MIT license.
+Deuce is released under the MIT license.
 
 (The MIT License)
 

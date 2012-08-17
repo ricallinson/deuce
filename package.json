@@ -1,14 +1,14 @@
 {
-    "name": "yui3-offline",
-    "description": "YUI3 Offline is a helper tool for building offline web applications with YUI3.",
+    "name": "deuce",
+    "description": "Deuce is a developer tool for building offline web applications with YUI.",
     "version": "0.0.1",
-    "main": "./lib/fetcher",
-    "author" : "Ric Allinson",
+    "main": "./lib/middleware",
+    "author" : "Richard S Allinson",
     "engines" : {
         "node" : ">=0.6.0 <= 0.9.0"
     },
     "bin": {
-        "yui3-offline": "bin/yui3-offline"
+        "deuce": "bin/deuce"
     },
     "scripts": {
         "test": "node ./tests/run.js"
@@ -26,7 +26,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/capecodehq/yui3-offline.git"
+        "url": "https://github.com/capecodehq/deuce.git"
     },
     "license": "MIT"
 }
