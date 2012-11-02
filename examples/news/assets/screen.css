@@ -1,0 +1,33 @@
+html {
+	font-family: verdana;
+	background-color: #006363;
+}
+
+li {
+	list-style: none;
+}
+
+li h3{
+	color: #5CCCCC;
+	font-size: 130%;
+	font-weight: bold;
+	padding: 1em;
+}
+
+li .preview {
+	height: 0;
+	overflow: hidden;
+	background: #111;
+	color: #fff;
+}
+
+li .text {
+	text-align: justify;
+	margin: 1em;
+	padding: 1em;
+	line-height: 1.5em;
+}
+
+li img {
+	display: none;
+}
