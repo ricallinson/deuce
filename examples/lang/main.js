@@ -25,26 +25,6 @@
 
 "use strict";
 
-YUI.add("init", function (Y) {
-
-	var resources;
-
-	// Lets see what we have.
-	Y.log(Y.Intl.getAvailableLangs("init"));
-	Y.log(Y.Intl.getLang("init"));
-
-	resources = Y.Intl.get("init");
-	Y.log(resources.HELLO);
-
-	// This does not work as the "lang/init_en-GB"
-	// module is not on the page or loaded dynamically.
-	Y.Intl.setLang("init", "en-GB");
-	Y.log(Y.Intl.getLang("init"));
-
-	// This is not the correct output
-	resources = Y.Intl.get("init");
-	Y.log(resources.HELLO);
-
-}, "", {
-	requires: ["intl"]
+define(["i18n!nls/colors"], function (colors) {
+	console.log(colors);
 });
