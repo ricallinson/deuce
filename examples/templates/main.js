@@ -25,8 +25,6 @@
 
 "use strict";
 
-YUI.add("init", function (Y) {
-	Y.log(Y.tmpls["templates-tmpls"]);
-}, "", {
-	requires: ["templates-tmpls"]
+define(["tmpls"], function (tmpls) {
+	console.log(tmpls);
 });
