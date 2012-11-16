@@ -25,8 +25,6 @@
 
 "use strict";
 
-YUI.add("init", function (Y) {
-	Y.log(Y.confs["configs-confs"]);
-}, "", {
-	requires: ["configs-confs"]
+define(["configs"], function (configs) {
+	console.log(configs);
 });
