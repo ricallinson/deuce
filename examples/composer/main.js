@@ -27,31 +27,33 @@
 
 define(["compose"], function (compose) {
 
-	function one(fn) {
-		fn("one");
-	}
+    function one(fn) {
+        fn("one");
+    }
 
-	function two(fn) {
-		fn("two");
-	}
+    function two(fn) {
+        fn("two");
+    }
 
-	function three(fn) {
-		fn("three");
-	}
+    function three(fn) {
+        fn("three");
+    }
 
-	function four(fn) {
-		fn("four");
-	}
+    function four(fn) {
+        fn("four");
+    }
 
-	var cfg = {
-			one: one,
-			two: two,
-			other: "other",
-			three: three,
-			four: four
-		};
+    var cfg = {
+            one: one,
+            two: two,
+            other: "other",
+            three: three,
+            four: four
+        },
+        start = new Date().getTime();
 
-	compose(cfg, function (map) {
-		console.log(JSON.stringify(map, null, 4));
-	});
+    compose(cfg, function (map) {
+        console.log(new Date().getTime() - start + "ms");
+        console.log(JSON.stringify(map, null, 4));
+    });
 });
