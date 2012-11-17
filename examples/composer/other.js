@@ -48,8 +48,8 @@ define(["compose"], function (compose) {
 		var cfg = {
 				one: one,
 				two: two,
-				object1: "object.one",
-				object2: "object.two",
+				object1: {module: "object", method: "one"},
+				object2: {module: "object", method: "two"},
 				three: three,
 				four: four
 			};
