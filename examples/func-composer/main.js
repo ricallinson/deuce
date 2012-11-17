@@ -21,49 +21,39 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-/*jslint stupid: true*/
+/*global define*/
 
 "use strict";
 
-var path = require("path"),
-    fs = require("fs");
+define(["compose"], function (compose) {
 
-/*
-    Configure the middleware
-*/
+	function one(fn) {
+		fn("one");
+	}
 
-module.exports = function (root) {
+	function two(fn) {
+		fn("two");
+	}
 
-    return function (req, res, next) {
+	function three(fn) {
+		fn("three");
+	}
 
-        var dir,
-            files,
-            name,
-            absPath,
-            tmpls = {};
+	function four(fn) {
+		fn("four");
+	}
 
-        /*
-            If the request is not for a config.js file return.
-        */
+	var cfg = {
+			one: one,
+			two: two,
+			other: "other",
+			three: three,
+			four: four
+		};
 
-        if (/\/tmpls\.js$/.test(req.url) === false) {
-            next();
-            return;
-        }
-
-        // Get the directory path from the URL by removing the ".js"
-        dir = path.join(root, req.url.slice(0, -3));
-
-        files = fs.readdirSync(dir);
-
-        for (name in files) {
-            if (files.hasOwnProperty(name)) {
-                absPath = path.join(dir, files[name]);
-                tmpls[files[name]] = fs.readFileSync(absPath, "utf8");
-            }
-        }
-
-        res.setHeader("Content-Type", "application/javascript");
-        res.end("define(" + JSON.stringify(tmpls, null, 4) + ")");
-    };
-};
+	compose(cfg, function (map) {
+		console.log(JSON.stringify(map, null, 4));
+	}, {
+		scope: this
+	});
+});

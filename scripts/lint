@@ -1,4 +1,8 @@
 echo Running JSLint
 
-find ./lib -name "*.js" -print0 | xargs -0 jslint
-find ./examples -name "*.js" -print0 | xargs -0 jslint
+./node_modules/jslint/bin/jslint.js ./lib/server.js
+./node_modules/jslint/bin/jslint.js ./lib/utils.js
+./node_modules/jslint/bin/jslint.js ./lib/assets/compose.js
+find ./lib/middleware -name "*.js" -print0 | xargs -0 ./node_modules/jslint/bin/jslint.js
+find ./lib/templates -name "*.js" -print0 | xargs -0 ./node_modules/jslint/bin/jslint.js
+find ./examples -name "*.js" -print0 | xargs -0 ./node_modules/jslint/bin/jslint.js
