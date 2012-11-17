@@ -4,18 +4,35 @@ html {
 }
 
 li {
+	background-color: #339933;
 	list-style: none;
 }
 
+li:nth-child(2n) {
+    background-color: #A200FF;
+}
+
+li:nth-child(3n) {
+    background-color: #8CBF26;
+}
+
+li:nth-child(4n) {
+    background-color: #E671B8;
+}
+
+li:nth-child(5n) {
+    background-color: #F09609;
+}
+
 li h3{
-	color: #5CCCCC;
+	color: #fff;
 	font-size: 130%;
 	font-weight: bold;
 	padding: 1em;
 }
 
 li .preview {
-	height: 0;
+	display: none;
 	overflow: hidden;
 	background: #111;
 	color: #fff;
