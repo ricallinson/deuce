@@ -25,18 +25,32 @@
 
 "use strict";
 
-define(["page"], function (page) {
+define(["page", "tmpls", "handlebars"], function (page, tmpls, handlebars) {
 
-	page("/$", function () {
-		console.log("Home");
+	/*
+		Single template for testing.
+	*/
+
+	var template = handlebars.compile(tmpls["main.hb.html"]);
+
+	/*
+		Route is regex at the mo.
+	*/
+
+	page.get("/$", function (req, res, next) {
+		res.send(template({title: "Home"}));
 	});
 
-	page("/one", function () {
-		console.log("One");
+	page.get("/one", function (req, res, next) {
+		res.send(template({title: "One"}));
 	});
 
-	page("/two", function () {
-		console.log("Two");
+	page.get("/two", function (req, res, next) {
+		res.send(template({title: "Two"}));
+	});
+
+	page.get(".*", function (req) {
+		console.log("404: " + req.url);
 	});
 
 	page.listen();

@@ -21,102 +21,120 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-/*global define*/
+/*global define, window, History*/
 
 "use strict";
 
-define(["jquery"/*history*/], function ($) {
+define(["jquery"], function ($) {
 
-	var stack = [];
+    var Page;
 
-	function page(regex, fn) {
+    Page = function (regex, fn) {
+        this.stack = [];
+    };
 
-		// default route to '/'
-	    if ('string' !== typeof regex) {
-	        fn = regex;
-	        regex = null;
-	    }
+    Page.prototype.get = function(regex, fn) {
 
-	    if (regex) {
-	        regex = new RegExp(regex);
-	    }
+        // default route to '/'
+        if (typeof regex !== "string") {
+            fn = regex;
+            regex = ".*";
+        }
 
-	    stack.push({regex: regex, handle: fn});
-	}
+        if (regex) {
+            regex = new RegExp(regex);
+        }
 
-	page.handle = function (url, out) {
+        this.stack.push({regex: regex, handle: fn});
+    };
 
-		var index = 0,
-	        layer;
+    Page.prototype.handle = function (url, out) {
 
-	    function next(err) {
+        var self = this,
+            index = 0,
+            layer,
+            request = {},
+            response = {};
 
-	        // next callback
-	        layer = stack[index];
-	        index = index + 1;
+        request.url = url;
 
-	        if (!layer) {
-	            // delegate to parent
-	            if (out) {
-	                out(err);
-	                return;
-	            }
-	            // or deal with here
-	            if (err) {
-	                // unhandled error
-	                console.log(err);
-	            }
-	            // we are done
-	            return;
-	        }
+        response.send = function (data) {
 
-	        // try and handle the url
-	        try {
-	            if (url === undefined) {
-	                url = "/";
-	            }
+            // Set the new content (use animation later)
+            $(self.target).html(data);
 
-	            // skip this layer if the route doesn't match.
-	            if (layer.regex && !layer.regex.test(url)) {
-	                next(err);
-	                return;
-	            }
+            // Bind to all new anchors
+            $(self.target + " a").click(function (e) {
+                var href = $(e.target).attr("href");
+                if (href[0] === "/" || href[0] === ".") {
+                    e.preventDefault();
+                    History.pushState(null, null, href);
+                }
+            });
+        };
 
-	            if (err) {
-	                next(err);
-	            } else {
-	                layer.handle(url, next);
-	            }
-	        } catch (e) {
-	            next(e);
-	        }
-	    }
+        function next(err) {
 
-	    // kick-off the work
-	    next();
-	}
+            // next callback
+            layer = self.stack[index];
+            index = index + 1;
 
-	page.listen = function (target) {
+            if (!layer) {
+                // delegate to parent
+                if (out) {
+                    out(err);
+                    return;
+                }
+                // or deal with here
+                if (err) {
+                    // unhandled error
+                    console.log(err);
+                }
+                // we are done
+                return;
+            }
 
-		if (!target) {
-			target = "body";
-		}
+            // try and handle the url
+            try {
+                if (url === undefined) {
+                    url = "/";
+                }
 
-		// Bind to StateChange Event
-	    History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
-	        page.handle(History.getState().hash);
-	    });
+                // skip this layer if the route doesn't match.
+                if (layer.regex && !layer.regex.test(url)) {
+                    next(err);
+                    return;
+                }
 
-	    // Bind to all click events
-	    $(target + " a").click(function (e) {
-	    	e.preventDefault();
-	    	History.pushState(null, null, $(e.target).attr("href"));
-	    });
+                if (err) {
+                    next(err);
+                } else {
+                    layer.handle(request, response, next);
+                }
+            } catch (e) {
+                next(e);
+            }
+        }
 
-		page.handle(History.getState().url);
-	}
+        // kick-off the work
+        next();
+    };
 
-	// History.pushState(null, null , "?page=" + path + "+me=to");
+    Page.prototype.listen = function (target) {
 
-    return page;
+        var self = this;
+
+        if (!target) {
+            this.target = "body";
+        }
+
+        // Bind to StateChange Event
+        History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
+            self.handle(History.getState().hash);
+        });
+
+        self.handle(History.getState().url);
+    };
+
+    return new Page();
 });
