@@ -1,29 +1,26 @@
 {
     "name": "deuce",
     "version": "0.0.1",
-    "description": "Deuce is a developer tool for building serverless web applications with YUI.",
+    "description": "Deuce is a developer tool for building serverless web applications with JavaScript.",
     "preferGlobal": true,
-    "main": "./lib/middleware",
+    "main": "./lib",
     "author" : "Richard S Allinson",
     "engines" : {
-        "node" : ">=0.6.0 <= 0.9.0"
+        "node" : ">=0.8.0 <= 0.11.0"
     },
     "bin": {
         "deuce": "bin/deuce"
     },
     "scripts": {
-        "test": "node ./tests/run.js"
+        "test": "mocha ./test"
     },
     "dependencies" : {
-        "commander": ">= 1.0.x",
-        "connect": ">= 2.4.x",
-        "js-yaml": ">= 1.0.x",
-        "step": ">= 0.0.x",
-        "yui": ">= 3.6.x",
-        "uglify-js": ">= 1.3.x"
+        "commander": "*",
+        "connect": "*"
     },
     "devDependencies": {
-        "jslint": ">= 0.1.x"
+        "jshint": "*",
+        "mocha": "*"
     },
     "repository": {
         "type": "git",
