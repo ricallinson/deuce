@@ -25,8 +25,7 @@
 
 var program = require("commander"),
 	connect = require("connect"),
-	path = require("path"),
-    middleware = {};
+	path = require("path");
 
 program.version("0.0.1");
 program.option("-v, --verbose", "runtime info");
