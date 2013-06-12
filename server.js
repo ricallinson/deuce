@@ -23,4 +23,38 @@
 
 "use strict";
 
-require("./lib/deuce");
+var program = require("commander"),
+	connect = require("connect"),
+	path = require("path"),
+    middleware = {};
+
+program.version("0.0.1");
+program.option("-v, --verbose", "runtime info");
+program.option("-p, --port [port]", "which port to use", 3000);
+program.option("-r, --root [dir]", "which directory to run from", process.cwd());
+program.option("-b, --build [dir]", "build all files for the web app to the given directory");
+
+program.parse(process.argv);
+
+/*
+	Build the web app if required
+*/
+
+if (program.build) {
+	console.log("Building to: " + program.build);
+	// Hand off to a build module here.
+	process.exit(0);
+}
+
+/*
+	Start the connect server
+*/
+
+connect()
+    .use(connect.favicon())
+    .use(connect.logger("dev"))
+    .use(connect.static(program.root))
+    .use(connect.static(path.join(__dirname, "assets")))
+    .listen(program.port);
+
+console.log("Running at http://localhost:" + program.port + "/index.html");

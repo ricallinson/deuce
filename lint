@@ -1,0 +1,4 @@
+echo Linting Deuce Project
+
+./node_modules/.bin/jshint --verbose ./server.js
+./node_modules/.bin/jshint --verbose ./lib
