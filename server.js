@@ -32,7 +32,8 @@ var program = require("commander"),
     connect = require("connect"),
     app,
     wrapper,
-    configs;
+    confs,
+    tmpls;
 
 /*
     Added command line options.
@@ -62,7 +63,8 @@ program.root = path.resolve(program.root);
 */
 
 wrapper = require("./lib/loaders/" + program.loader);
-configs = require("./lib/middleware/config");
+confs = require("./lib/middleware/confs");
+tmpls = require("./lib/middleware/tmpls");
 
 /*
     Build the web app if required.
@@ -105,10 +107,16 @@ app.use(connect.static(program.root));
 app.use(connect.static(wrapper.assets(__dirname)));
 
 /*
+    Serve template files as JS modules.
+*/
+
+app.use(tmpls.load(program.root, wrapper));
+
+/*
     Serve config files as JS modules.
 */
 
-app.use(configs.load(program.root, wrapper));
+app.use(confs.load(program.root, wrapper));
 
 /*
     Serve the template "index.html" file from the wrapper middleware.
