@@ -29,16 +29,9 @@
 
 var program = require("commander"),
     connect = require("connect"),
-    path = require("path"),
-    app;
-
-/*
-    TMP: Place holders for wrapper and middleware modules.
-*/
-
-var type = "amd",
-    wrapper = require("./lib/wrappers/" + type),
-    configs = require("./lib/middleware/config");
+    app,
+    wrapper,
+    configs;
 
 /*
     Added command line options.
@@ -46,6 +39,7 @@ var type = "amd",
 
 program.version("0.0.1");
 program.option("-v, --verbose", "runtime info");
+program.option("-l, --loader [loader]", "which module loader to use 'yui' or 'amd'", "yui");
 program.option("-p, --port [port]", "which port to use", 3000);
 program.option("-r, --root [dir]", "which directory to run from", process.cwd());
 program.option("-b, --build [dir]", "build all files for the web app to the given directory");
@@ -55,6 +49,13 @@ program.option("-b, --build [dir]", "build all files for the web app to the give
 */
 
 program.parse(process.argv);
+
+/*
+    TMP: Place holders for loader and middleware modules.
+*/
+
+wrapper = require("./lib/loaders/" + program.loader);
+configs = require("./lib/middleware/config");
 
 /*
     Build the web app if required.
