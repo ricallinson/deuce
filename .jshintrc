@@ -16,6 +16,6 @@
     "strict": true,
     "trailing": true,
     "maxparams": 5,
-    "maxcomplexity": 3,
+    "maxcomplexity": 4,
     "indent": 4
 }

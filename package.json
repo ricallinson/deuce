@@ -16,7 +16,8 @@
     },
     "dependencies" : {
         "commander": "*",
-        "connect": "*"
+        "connect": "*",
+        "js-yaml": "*"
     },
     "devDependencies": {
         "jshint": "*",

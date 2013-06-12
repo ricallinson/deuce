@@ -54,6 +54,7 @@ connect()
     .use(connect.logger("dev"))
     .use(connect.static(program.root))
     .use(connect.static(path.join(__dirname, "assets")))
+    .use(require("./lib/middleware/config").load(program.root))
     .listen(program.port);
 
 console.log("Running at http://localhost:" + program.port + "/index.html");
