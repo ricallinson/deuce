@@ -23,9 +23,26 @@
 
 "use strict";
 
+/*
+    Load required modules.
+*/
+
 var program = require("commander"),
-	connect = require("connect"),
-	path = require("path");
+    connect = require("connect"),
+    path = require("path"),
+    app;
+
+/*
+    TMP: Place holders for wrapper and middleware modules.
+*/
+
+var type = "amd",
+    wrapper = require("./lib/wrappers/" + type),
+    configs = require("./lib/middleware/config");
+
+/*
+    Added command line options.
+*/
 
 program.version("0.0.1");
 program.option("-v, --verbose", "runtime info");
@@ -33,28 +50,86 @@ program.option("-p, --port [port]", "which port to use", 3000);
 program.option("-r, --root [dir]", "which directory to run from", process.cwd());
 program.option("-b, --build [dir]", "build all files for the web app to the given directory");
 
+/*
+    Parse the command line inputs.
+*/
+
 program.parse(process.argv);
 
 /*
-	Build the web app if required
+    Build the web app if required.
 */
 
 if (program.build) {
-	console.log("Building to: " + program.build);
-	// Hand off to a build module here.
-	process.exit(0);
+    console.log("Building to: " + program.build);
+    // Hand off to a build module here.
+    process.exit(0);
 }
 
 /*
-	Start the connect server
+    Create the connect app.
 */
 
-connect()
-    .use(connect.favicon())
-    .use(connect.logger("dev"))
-    .use(connect.static(program.root))
-    .use(connect.static(path.join(__dirname, "assets")))
-    .use(require("./lib/middleware/config").load(program.root))
-    .listen(program.port);
+app = connect();
+
+/*
+    Serve a fave icon.
+*/
+
+app.use(connect.favicon());
+
+/*
+    Log all requests.
+*/
+
+app.use(connect.logger("dev"));
+
+/*
+    Serve static files from the application root.
+*/
+
+app.use(connect.static(program.root));
+
+/*
+    Serve static files from the wrapper assets folder.
+*/
+
+app.use(connect.static(wrapper.assets(__dirname)));
+
+/*
+    Serve config files as JS modules.
+*/
+
+app.use(configs.load(program.root, wrapper));
+
+/*
+    Serve the template "index.html" file from the wrapper middleware.
+    This only happens if nothing above has served the path "/index.html".
+*/
+
+app.use("/index.html", function (req, res) {
+
+    /*
+        Set the Content-Type returned to JS.
+    */
+
+    res.setHeader("Content-Type", "text/html");
+
+    /*
+        Return the index.html file.
+    */
+
+    res.end(wrapper.index());
+});
+
+/*
+    Start the connect server.
+*/
+
+app.listen(program.port);
+
+/*
+    Log that we have the server started.
+*/
 
 console.log("Running at http://localhost:" + program.port + "/index.html");
