@@ -28,6 +28,7 @@
 */
 
 var program = require("commander"),
+    path = require("path"),
     connect = require("connect"),
     app,
     wrapper,
@@ -49,6 +50,12 @@ program.option("-b, --build [dir]", "build all files for the web app to the give
 */
 
 program.parse(process.argv);
+
+/*
+    Convert the program.root to an absolute path.
+*/
+
+program.root = path.resolve(program.root);
 
 /*
     TMP: Place holders for loader and middleware modules.
@@ -120,7 +127,7 @@ app.use("/index.html", function (req, res) {
         Return the index.html file.
     */
 
-    res.end(wrapper.index());
+    res.end(wrapper.index(program.root));
 });
 
 /*

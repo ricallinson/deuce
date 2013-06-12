@@ -17,7 +17,8 @@
     "dependencies" : {
         "commander": "*",
         "connect": "*",
-        "js-yaml": "*"
+        "js-yaml": "*",
+        "mustache": "*"
     },
     "devDependencies": {
         "jshint": "*",

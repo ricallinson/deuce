@@ -1,0 +1,5 @@
+debug: true
+combine: false
+modules:
+    main:
+        path: "./main.js"

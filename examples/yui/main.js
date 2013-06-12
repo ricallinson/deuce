@@ -2,6 +2,8 @@
 
 "use strict";
 
-YUI().use(function (Y) {
-	Y.log("YUI!");
+YUI.add("main", function (Y) {
+	Y.one("body").append("<h1>YUI!</h1>");
+}, "", {
+	requires: ["node"]
 });
