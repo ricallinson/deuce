@@ -30,6 +30,7 @@
 var program = require("commander"),
     path = require("path"),
     connect = require("connect"),
+    builder = require("./lib/builder"),
     app,
     wrapper,
     confs,
@@ -65,16 +66,6 @@ program.root = path.resolve(program.root);
 wrapper = require("./lib/loaders/" + program.loader);
 confs = require("./lib/middleware/confs");
 tmpls = require("./lib/middleware/tmpls");
-
-/*
-    Build the web app if required.
-*/
-
-if (program.build) {
-    console.log("Building to: " + program.build);
-    // Hand off to a build module here.
-    process.exit(0);
-}
 
 /*
     Create the connect app.
@@ -139,13 +130,30 @@ app.use("/index.html", function (req, res) {
 });
 
 /*
-    Start the connect server.
+    Start the application for either building or developement.
 */
 
-app.listen(program.port);
+if (program.build) {
 
-/*
-    Log that we have the server started.
-*/
+    /*
+        Build the web app if required.
+    */
 
-console.log("Running at http://localhost:" + program.port + "/index.html");
+    program.build = path.resolve(program.build);
+    console.log("Building to: " + program.build);
+    builder.build(program.root, program.build, app);
+
+} else {
+
+    /*
+        Start the connect server.
+    */
+
+    app.listen(program.port);
+
+    /*
+        Log that we have the server started.
+    */
+
+    console.log("Running at http://localhost:" + program.port + "/index.html");
+}
