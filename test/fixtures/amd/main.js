@@ -2,6 +2,6 @@
 
 "use strict";
 
-define(function (other) {
+define(function () {
 	console.log("AMD!");
 });
