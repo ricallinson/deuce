@@ -2,6 +2,6 @@
 
 "use strict";
 
-define(function () {
+define(["mymodule/example"], function (other) {
 	console.log("AMD!");
 });
