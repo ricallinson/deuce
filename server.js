@@ -30,7 +30,6 @@
 var program = require("commander"),
     path = require("path"),
     connect = require("connect"),
-    builder = require("./lib/builder"),
     app,
     wrapper,
     confs,
@@ -141,7 +140,7 @@ if (program.build) {
 
     program.build = path.resolve(program.build);
     console.log("Building to: " + program.build);
-    builder.build(program.root, program.build, app);
+    process.exit(0);
 
 } else {
 
