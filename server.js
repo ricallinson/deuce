@@ -139,7 +139,7 @@ if (program.build) {
     */
 
     program.build = path.resolve(program.build);
-    console.log("Building to: " + program.build);
+    console.log("(Not working) Building to: " + program.build);
     process.exit(0);
 
 } else {
