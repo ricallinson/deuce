@@ -18,8 +18,7 @@
         "commander": "*",
         "connect": "*",
         "js-yaml": "*",
-        "mustache": "*",
-        "node-fs": "*"
+        "mustache": "*"
     },
     "devDependencies": {
         "jshint": "*",
