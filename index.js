@@ -37,7 +37,6 @@ var program = require("commander"),
 */
 
 program.version("0.0.1");
-program.option("-v, --verbose", "runtime info");
 program.option("-l, --loader [loader]", "which module loader to use 'yui' or 'amd'", "yui");
 program.option("-p, --port [port]", "which port to use", 3000);
 program.option("-r, --root [dir]", "which directory to run from", process.cwd());
