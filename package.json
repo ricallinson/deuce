@@ -12,7 +12,7 @@
         "deuce": "bin/deuce"
     },
     "scripts": {
-        "test": "mocha ./test"
+        "test": "./test/run"
     },
     "dependencies" : {
         "commander": "*",
@@ -23,7 +23,9 @@
     },
     "devDependencies": {
         "jshint": "*",
-        "mocha": "*"
+        "mocha": "*",
+        "istanbul": "*",
+        "xunit-file": "*"
     },
     "repository": {
         "type": "git",

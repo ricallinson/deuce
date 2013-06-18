@@ -1,0 +1,13 @@
+echo Linting Deuce Project
+
+./node_modules/.bin/jshint --verbose ./index.js
+./node_modules/.bin/jshint --verbose ./lib
+./node_modules/.bin/jshint --verbose ./test
+
+echo Unit-testing Deuce Project
+
+node ./node_modules/istanbul/lib/cli.js cover -- ./node_modules/mocha/bin/_mocha test
+
+echo Coverage Report for Deuce Project
+
+echo $(pwd)/coverage/lcov-report/index.html

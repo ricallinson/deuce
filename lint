@@ -1,5 +1,0 @@
-echo Linting Deuce Project
-
-./node_modules/.bin/jshint --verbose ./index.js
-./node_modules/.bin/jshint --verbose ./lib
-./node_modules/.bin/jshint --verbose ./test
