@@ -18,7 +18,8 @@
         "commander": "*",
         "connect": "*",
         "js-yaml": "*",
-        "mustache": "*"
+        "mustache": "*",
+        "diveSync": "*"
     },
     "devDependencies": {
         "jshint": "*",

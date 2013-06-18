@@ -26,7 +26,8 @@
 "use strict";
 
 var utils = require("../lib/utils"),
-    assert = require("assert");
+    assert = require("assert"),
+    libpath = require("path");
 
 describe("utils.getRelativePath()", function () {
 
@@ -53,6 +54,19 @@ describe("utils.getModuleNameFromPath()", function () {
         name = utils.getModuleNameFromPath(path, root);
 
         assert.equal(name, "c/d");
+    });
+});
+
+describe("utils.getFileListSync()", function () {
+
+    it("should return array", function () {
+
+        var fullpath = libpath.join(__dirname, "fixtures"),
+            list;
+
+        list = utils.getFileListSync(fullpath);
+
+        assert.equal(list.length, 10);
     });
 });
 
