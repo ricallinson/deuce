@@ -21,6 +21,9 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+/* Overrides for jshint to allow the use of this module in testing */
+/* jshint proto: true, camelcase: false */
+
 "use strict";
 
 /**

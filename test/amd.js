@@ -25,48 +25,36 @@
 
 "use strict";
 
-var utils = require("../lib/utils"),
-    assert = require("assert"),
-    libpath = require("path");
+var deuce = require("../lib/deuce"),
+    path = require("path"),
+    assert = require("assert");
 
-describe("utils.getRelativePath()", function () {
+describe("/confs.js", function () {
 
-    it("should stip the root from the path", function () {
+    it("should return the default JS file for AMD", function (done) {
 
-        var path = "/a/b/c/d",
-            root = "/a/b",
-            name;
+        var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
 
-        name = utils.getRelativePath(path, root);
-
-        assert.equal(name, "./c/d");
+        server.request()
+            .get("/confs.js")
+            .end(function (res) {
+                assert.equal(res.body.indexOf("define("), 38);
+                done();
+            });
     });
 });
 
-describe("utils.getModuleNameFromPath()", function () {
+describe("/tmpls.js", function () {
 
-    it("should stip name from path", function () {
+    it("should return the default JS file for AMD", function (done) {
 
-        var path = "/a/b/c/d",
-            root = "/a/b",
-            name;
+        var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
 
-        name = utils.getModuleNameFromPath(path, root);
-
-        assert.equal(name, "c/d");
+        server.request()
+            .get("/tmpls.js")
+            .end(function (res) {
+                assert.equal(res.body.indexOf("define("), 38);
+                done();
+            });
     });
 });
-
-describe("utils.getFileListSync()", function () {
-
-    it("should return array", function () {
-
-        var fullpath = libpath.join(__dirname, "fixtures"),
-            list;
-
-        list = utils.getFileListSync(fullpath);
-
-        assert.equal(list.length, 13);
-    });
-});
-

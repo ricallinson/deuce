@@ -25,7 +25,9 @@
         "jshint": "*",
         "mocha": "*",
         "istanbul": "*",
-        "xunit-file": "*"
+        "xunit-file": "*",
+        "requirejs": "*",
+        "yui": "*"
     },
     "repository": {
         "type": "git",
