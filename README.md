@@ -7,7 +7,7 @@ __Deuce__ is a developer tool for building serverless single page web applicatio
 ## Installation
 
 	> npm install deuce -g
-	> deuce -h
+	> deuce -r ./examples/news
 
 # License
 
