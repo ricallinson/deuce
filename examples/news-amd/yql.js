@@ -27,6 +27,12 @@ define(["jquery"], function ($) {
         var uri = "http://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(query) + "&format=json";
 
         /*
+            Make sure we are not going to hit a cached version.
+        */
+
+        $.ajaxSetup({cache: false});
+
+        /*
             Pass the YQL uri and the callback function to jQuery getJSON.
         */
 
