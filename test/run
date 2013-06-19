@@ -1,6 +1,7 @@
 
 ./node_modules/.bin/jshint --verbose ./index.js
 ./node_modules/.bin/jshint --verbose ./lib
+./node_modules/.bin/jshint --verbose ./examples
 ./node_modules/.bin/jshint --verbose ./test
 
 node ./node_modules/istanbul/lib/cli.js cover -- ./node_modules/mocha/bin/_mocha test
