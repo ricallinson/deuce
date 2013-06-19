@@ -1,0 +1,17 @@
+#
+# Configuration file for the news application.
+#
+
+# This is the CSS that will be loaded into the page.
+
+css:
+  - "./assets/pure-min.css"
+  - "./assets/main.css"
+
+# This is the YQL query that will be used to get the news.
+
+query: "select title, link from rss where url=\"http://rss.news.yahoo.com/rss/odd\""
+
+error:
+  link: ""
+  title: "Error reading news headlines"

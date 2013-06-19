@@ -1,0 +1,67 @@
+
+body {
+    font-family: "omnes-pro",sans-serif;
+    padding: 2em;
+    color: #777;
+}
+
+/* --------------------------
+ * Element Styles
+ * --------------------------
+ */
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: rgb(75, 75, 75);
+}
+
+a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+
+a:visited {
+    color: #265778; /* block-normal-text-normal */
+}
+
+/* --------------------------
+ * Header Module Styles
+ * --------------------------
+ */
+.header {
+     min-height: 80px;
+     margin: 0;
+     color: #333;
+     padding: 1em;
+     text-align: center;
+     border-bottom: 1px solid #eee;
+     background: #fff;
+ }
+    .header h1 {
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 300;
+    }
+     .header h2 {
+        font-weight: 300;
+        margin: 0;
+        color: #ccc;
+    }
+
+/* --------------------------
+ * Custom styles
+ * --------------------------
+ */
+
+.items {
+	padding: 1em 0em;
+	text-align: center;
+}
+
+.items a {
+	display: inline-block;
+	text-decoration: none;
+	padding: 0.5em 0em;
+	color: rgb(75, 75, 75);
+}

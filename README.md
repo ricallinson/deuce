@@ -4,12 +4,21 @@
 
 __Deuce__ is a developer tool for building serverless single page web applications with JavaScript. It allows you to  create applications that run locally from the file system. These applications can then be deployed into containers like [Cordova (Phonegap)](http://incubator.apache.org/cordova/) or severed with caching instructions using a [cache manifest](http://en.wikipedia.org/wiki/Cache_manifest_in_HTML5) file.
 
-## Developer Installation and Example
+## Developer Installation
 	
 	git clone git@github.com:ricallinson/deuce.git
 	cd ./deuce
 	npm i
-	./bin/deuce -r ./examples/news
+
+## Examples
+
+For a YUI example;
+
+	./bin/deuce --root ./examples/news-yui
+
+For an AMD, Jquery example;
+
+	./bin/deuce --loader amd --root ./examples/news-amd
 
 # License
 
