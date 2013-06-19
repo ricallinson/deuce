@@ -6,10 +6,10 @@ __Deuce__ is a developer tool for building serverless single page web applicatio
 
 ## Developer Installation and Example
 	
-	> git clone git@github.com:ricallinson/deuce.git
-	> cd ./deuce
-	> npm i
-	> ./bin/deuce -r ./examples/news
+	git clone git@github.com:ricallinson/deuce.git
+	cd ./deuce
+	npm i
+	./bin/deuce -r ./examples/news
 
 # License
 
