@@ -30,7 +30,7 @@ var deuce = require("../lib/deuce"),
     loaderYui = require("../lib/loaders/yui"),
     assert = require("assert");
 
-describe("/confs.js", function () {
+describe("YUI generated config files", function () {
 
     var server = deuce.createServer(path.join(__dirname, "fixtures"), "yui");
 
@@ -55,7 +55,34 @@ describe("/confs.js", function () {
     });
 });
 
-describe("/tmpls.js", function () {
+describe("YUI module files", function () {
+
+    var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
+
+    it("should return main", function (done) {
+
+        server.request()
+            .get("/yui/main.js")
+            .end(function (res) {
+                assert.equal(res.body.indexOf("YUI.add(\"main\""), 37);
+                assert.equal(res.body.indexOf("YUI!"), 76);
+                done();
+            });
+    });
+
+    it("should return all1", function (done) {
+
+        server.request()
+            .get("/yui/subfolder/requires.js")
+            .end(function (res) {
+                assert.equal(res.body.indexOf("YUI.add(\"all1\""), 37);
+                assert.equal(res.body.indexOf("Subfolder YUI!"), 76);
+                done();
+            });
+    });
+});
+
+describe("YUI generated template files", function () {
 
     var server = deuce.createServer(path.join(__dirname, "fixtures"), "yui");
 

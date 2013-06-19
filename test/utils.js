@@ -66,7 +66,7 @@ describe("utils.getFileListSync()", function () {
 
         list = utils.getFileListSync(fullpath);
 
-        assert.equal(list.length, 13);
+        assert.equal(list.length, 14);
     });
 });
 

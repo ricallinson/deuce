@@ -29,11 +29,11 @@ var deuce = require("../lib/deuce"),
     path = require("path"),
     assert = require("assert");
 
-describe("/confs.js", function () {
+describe("AMD generated config files", function () {
+
+    var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
 
     it("should return the default JS file for AMD", function (done) {
-
-        var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
 
         server.request()
             .get("/confs.js")
@@ -44,16 +44,43 @@ describe("/confs.js", function () {
     });
 });
 
-describe("/tmpls.js", function () {
+describe("AMD generated template files", function () {
+
+    var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
 
     it("should return the default JS file for AMD", function (done) {
-
-        var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
 
         server.request()
             .get("/tmpls.js")
             .end(function (res) {
                 assert.equal(res.body.indexOf("define("), 38);
+                done();
+            });
+    });
+});
+
+describe("AMD module files", function () {
+
+    var server = deuce.createServer(path.join(__dirname, "fixtures"), "amd");
+
+    it("should return main", function (done) {
+
+        server.request()
+            .get("/amd/main.js")
+            .end(function (res) {
+                assert.equal(res.body.indexOf("define("), 40);
+                assert.equal(res.body.indexOf("AMD!"), 75);
+                done();
+            });
+    });
+
+    it("should return subfolder/other", function (done) {
+
+        server.request()
+            .get("/amd/subfolder/other.js")
+            .end(function (res) {
+                assert.equal(res.body.indexOf("define("), 40);
+                assert.equal(res.body.indexOf("Other AMD!"), 75);
                 done();
             });
     });
