@@ -19,13 +19,13 @@
         "connect": "*",
         "js-yaml": "*",
         "mustache": "*",
-        "diveSync": "*"
+        "diveSync": "*",
+        "mkdirp": "*"
     },
     "devDependencies": {
         "jshint": "*",
         "mocha": "*",
         "istanbul": "*",
-        "xunit-file": "*",
         "requirejs": "*",
         "yui": "*"
     },

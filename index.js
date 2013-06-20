@@ -76,7 +76,13 @@ if (program.build) {
         Log that we are going to do something.
     */
 
-    console.log("(Not working) Building to: " + program.build);
+    console.log("(Not working yet) Building to: " + program.build);
+
+    /*
+        Give the server and destination directory to the build module.
+    */
+
+    require("./lib/build").generateApp(server, program.build);
 
 } else {
 
