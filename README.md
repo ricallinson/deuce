@@ -20,6 +20,14 @@ For an AMD, Jquery example;
 
 	./bin/deuce --loader amd --root ./examples/news-amd
 
+# Info
+
+## EMFILE error
+
+If you get an "EMFILE error" when running the build command on osx it's because you have too many files open. You can work around this by running the following command which increase the number of files you can open.
+
+	ulimit -S -n 5000
+
 # License
 
 Deuce is released under the MIT license.

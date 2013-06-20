@@ -20,7 +20,8 @@
         "js-yaml": "*",
         "mustache": "*",
         "diveSync": "*",
-        "mkdirp": "*"
+        "mkdirp": "*",
+        "step": "*"
     },
     "devDependencies": {
         "jshint": "*",
