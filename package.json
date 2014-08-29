@@ -1,12 +1,12 @@
 {
     "name": "deuce",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Deuce is a developer tool for building serverless web applications with JS.",
     "preferGlobal": true,
     "main": "./lib/middleware",
     "author" : "Richard S Allinson",
     "engines" : {
-        "node" : ">=0.6.0 <= 0.9.0"
+        "node" : ">=0.10.0 <= 0.11.0"
     },
     "bin": {
         "deuce": "bin/deuce"
@@ -15,13 +15,16 @@
         "test": "node ./tests/run.js"
     },
     "dependencies" : {
-        "commander": "*",
-        "connect": "*",
-        "js-yaml": "*",
-        "uglify-js": "*"
+        "commander": "~2.3.0",
+        "connect": "~3.1.1",
+        "serve-static": "~1.5.3",
+        "morgan": "~1.2.3",
+        "serve-favicon": "~2.1.1",
+        "js-yaml": "~3.2.1",
+        "uglify-js": "~2.4.15"
     },
     "devDependencies": {
-        "jslint": ">= *"
+        "jshint": ">= ~2.5.5"
     },
     "repository": {
         "type": "git",
