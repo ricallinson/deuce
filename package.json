@@ -21,7 +21,10 @@
         "morgan": "~1.2.3",
         "serve-favicon": "~2.1.1",
         "js-yaml": "~3.2.1",
-        "uglify-js": "~2.4.15"
+        "uglify-js": "~2.4.15",
+        "diveSync": "~0.2.1",
+        "mkdirp": "~0.5.0",
+        "supertest": "~0.13.0"
     },
     "devDependencies": {
         "jshint": ">= ~2.5.5"
